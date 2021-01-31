@@ -29,9 +29,17 @@ export default {
 </script>
 
 <style lang="scss">
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 body {
-  background: #2c3e50;
-  color: #fff;
+  background: #fff;
+  font-family: 'Open Sans', sans-serif;
+  /* font-size: 10px; */
+  width: 100%;
+  /* color: #fff; */
 }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -39,6 +47,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 a {
-  color: inherit;
+  text-decoration: none;
 }
 </style>
