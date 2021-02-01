@@ -1,12 +1,5 @@
 <template>
   <div class="login">
-    <!-- <h1>login</h1>
-    <form @submit.prevent="Login">
-      <input type="text" placeholder="Email" v-model="email" />
-      <input type="password" placeholder="Password" v-model="password" />
-      <input type="submit" value="Login" />
-      <p>Need an account <router-link to="/register">Register</router-link></p>
-    </form> -->
     <div class="login__side">
       <div class="login__side-con">
         <img

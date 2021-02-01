@@ -73,12 +73,37 @@
         >
       </form>
     </section>
+    <section class="jobs">
+      <h1 class="jobs__heading">Latest Jobs</h1>
+      <div class="jobs__con">
+        <div class="jobs__child" v-for="job in jobs" :key="job.id">
+          <p class="jobs__title">{{ job.title }}</p>
+          <div class="jobs__details">
+            <p class="jobs__location">{{ job.location }}</p>
+            <p class="jobs__time">{{ job.published_at.for_humans }}</p>
+          </div>
+
+          <div class="jobs__company">
+            <img
+              :src="job.company.avatar"
+              :alt="[job.avatar]"
+              class="jobs__icon"
+            />
+            <p class="jobs__name">{{ job.company.name }}</p>
+          </div>
+          <router-link to="/login">
+            <button class="jobs__apply">Apply Now</button>
+          </router-link>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script>
 import { ref, onBeforeMount } from 'vue';
 import firebase from 'firebase';
+import getJobs from '../composables/getJobs';
 import axios from 'axios';
 
 export default {
@@ -87,7 +112,10 @@ export default {
   setup() {
     const name = ref('');
     const search_query = ref('');
-    const joblists = ref([]);
+    // const jobs = ref([]);
+    const { jobs, error, load } = getJobs();
+
+    load();
 
     const HandleSearch = () => {
       if (search_query.value != '') {
@@ -122,7 +150,8 @@ export default {
       Logout,
       HandleSearch,
       search_query,
-      joblists,
+      jobs,
+      error,
     };
   },
 };
@@ -221,6 +250,139 @@ export default {
     color: #fff;
   }
 }
+.jobs {
+  &__heading {
+    font-size: 2em;
+    margin-left: 2em;
+  }
+
+  &__con {
+    max-width: 1200px;
+    margin: 2em auto;
+    grid-row-gap: 40px;
+    grid-column-gap: 40px;
+    -moz-column-gap: 40px;
+    column-gap: 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: 60px;
+  }
+  &__child {
+    position: relative;
+    padding: 1em;
+    width: 100%;
+    height: 20em;
+    grid-row-end: span 4;
+    background-color: #fff;
+    box-shadow: 0px 0px 106px -59px rgba(173, 171, 173, 1);
+  }
+  &__title {
+    font-weight: bold;
+    line-height: 1.8;
+    margin: 1em 0;
+    background-color: transparent;
+  }
+  &__details {
+    position: absolute;
+    top: 40%;
+    left: 1em;
+  }
+  &__location {
+    color: #707070;
+  }
+  &__time {
+    font-size: 0.8em;
+    color: #f261b4;
+    font-weight: bold;
+  }
+  &__company {
+    position: absolute;
+    top: 60%;
+  }
+
+  &__icon {
+    width: 2em;
+  }
+  &__apply {
+    position: absolute;
+    bottom: 2em;
+    margin: 0 auto;
+    display: block;
+    width: 90%;
+    height: 3em;
+    border: none;
+    color: white;
+    background-color: #16c484;
+    cursor: pointer;
+  }
+}
+/* .jobs {
+  &__heading {
+    font-size: 2em;
+    margin-left: 2em;
+  }
+  &__con {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minimax(200px 1fr));
+    grid-auto-rows: 60px;
+    max-width: 1200px;
+    margin: 2em auto;
+    grid-row-gap: 40px;
+    grid-column-gap: 40px;
+
+    &__child {
+      position: relative;
+      padding: 1em;
+      width: 100%;
+      height: 20em;
+      background-color: #fff;
+   
+
+      &__title {
+        font-weight: 700;
+        line-height: 1.8;
+        margin: 1em 0;
+        background-color: transparent;
+      }
+
+      &__details {
+        position: absolute;
+        top: 40%;
+        left: 1em;
+
+        &__location {
+          color: #707070;
+        }
+        &__time {
+          font-size: 0.8em;
+          color: #f261b4;
+          font-weight: 700;
+        }
+      }
+
+      &__company {
+        position: absolute;
+        top: 60%;
+
+        &__icon {
+          width: 2em;
+        }
+      }
+    }
+    &__apply {
+      position: absolute;
+      bottom: 2em;
+      margin: 0 auto;
+      display: block;
+      width: 90%;
+      height: 3em;
+      border: none;
+      color: #fff;
+      background-color: #16c484;
+      cursor: pointer;
+    }
+  }
+} */
 
 @media (max-width: 990px) {
   .logo {
