@@ -24,7 +24,9 @@
           <router-link to="/" class="header__link">Post Jobs</router-link>
         </div>
         <div class="header__navbar-right">
-          <routbtn to="/login" class="header__btn white">Log In</routbtn>
+          <router-link to="/login" class="header__btn white"
+            >Log In</router-link
+          >
           <router-link to="/register" class="header__btn active"
             >Sign Up</router-link
           >
@@ -200,8 +202,27 @@ export default {
     padding: 0.2em;
   }
 }
+.filter {
+  margin: 10em 2em;
 
-@media (max-width: 768px) {
+  &__search {
+    height: 3em;
+    width: 30em;
+    color: #707070;
+    border: none;
+    outline: none;
+  }
+  &__button {
+    height: 3em;
+    border: none;
+    outline: none;
+    width: 5em;
+    background-color: #f261b4;
+    color: #fff;
+  }
+}
+
+@media (max-width: 990px) {
   .logo {
     font-size: 2em;
     padding: 0;
@@ -264,6 +285,18 @@ export default {
       top: 2em;
       right: 3em;
       width: 3em;
+    }
+  }
+  .filter {
+    &__form {
+      width: 80%;
+      margin: auto;
+    }
+    &__search {
+      width: 60%;
+    }
+    &__button {
+      width: 38%;
     }
   }
 }
