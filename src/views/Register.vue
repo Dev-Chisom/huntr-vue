@@ -14,14 +14,14 @@
         <router-link to="/" class="register__logo logo">hunt</router-link>
         <h3 class="register__heading">Need a job? register</h3>
       </div>
-      <form class="register__form" @submit.prevent="register">
-        <input
+      <form class="register__form" @submit.prevent="Register">
+        <!-- <input
           type="text"
           required="required"
           placeholder="Your Name"
           v-model="name"
           class="register__name"
-        />
+        /> -->
         <input
           type="text"
           required="required"
