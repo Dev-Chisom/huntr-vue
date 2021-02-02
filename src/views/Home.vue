@@ -97,6 +97,38 @@
         </div>
       </div>
     </section>
+    <section class="category">
+      <h1 class="heading category__heading--big">Job Category</h1>
+      <div class="category__con">
+        <div class="category__child">
+          <img
+            src="../assets/icons/icons/ic_invert_colors_24px.png"
+            alt="icon"
+            class="category__icon"
+          />
+          <h3 class="category__heading--small">Design</h3>
+          <p class="category__info">150 Job Vacancy</p>
+        </div>
+        <div class="category__child">
+          <img
+            src="../assets/icons/icons/ic_phonelink_24px.png"
+            alt="icon"
+            class="category__icon"
+          />
+          <h3 class="category__heading--small">Development</h3>
+          <p class="category__info">200 Job Vacancy</p>
+        </div>
+        <div class="category__child">
+          <img
+            src="../assets/icons/icons/ic_poll_24px.png"
+            alt="icon"
+            class="category__icon"
+          />
+          <h3 class="category__heading--small">Project Management</h3>
+          <p class="category__info">120 Job Vacancy</p>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -316,73 +348,41 @@ export default {
     cursor: pointer;
   }
 }
-/* .jobs {
-  &__heading {
+.category {
+  background-color: #fafafa;
+  &__heading--big {
     font-size: 2em;
-    margin-left: 2em;
+    margin: 5em 0 0 2em;
   }
   &__con {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minimax(200px 1fr));
-    grid-auto-rows: 60px;
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 2em auto;
     grid-row-gap: 40px;
-    grid-column-gap: 40px;
-
-    &__child {
-      position: relative;
-      padding: 1em;
-      width: 100%;
-      height: 20em;
-      background-color: #fff;
-   
-
-      &__title {
-        font-weight: 700;
-        line-height: 1.8;
-        margin: 1em 0;
-        background-color: transparent;
-      }
-
-      &__details {
-        position: absolute;
-        top: 40%;
-        left: 1em;
-
-        &__location {
-          color: #707070;
-        }
-        &__time {
-          font-size: 0.8em;
-          color: #f261b4;
-          font-weight: 700;
-        }
-      }
-
-      &__company {
-        position: absolute;
-        top: 60%;
-
-        &__icon {
-          width: 2em;
-        }
-      }
-    }
-    &__apply {
-      position: absolute;
-      bottom: 2em;
-      margin: 0 auto;
-      display: block;
-      width: 90%;
-      height: 3em;
-      border: none;
-      color: #fff;
-      background-color: #16c484;
-      cursor: pointer;
-    }
+    grid-column-gap: 20px;
+    /* -moz-column-gap: 20px; */
+    column-gap: 200px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-auto-rows: 40px;
   }
-} */
+  &__child {
+    color: #707070;
+    text-align: center;
+    position: relative;
+    padding: 1em;
+    width: 100%;
+    height: 15em;
+    grid-row-end: span 4;
+    background-color: #fff;
+  }
+  &__icon {
+    margin: 2em 0;
+    height: 2em;
+  }
+  &__heading--small {
+    margin: 1em 0;
+  }
+}
 
 @media (max-width: 990px) {
   .logo {
@@ -459,6 +459,39 @@ export default {
     }
     &__button {
       width: 38%;
+    }
+  }
+  .job {
+    font-size: 12px;
+    &__heading {
+      font-size: 2.8em;
+      margin: 2em 0;
+      text-align: center;
+    }
+    &__con {
+      grid-row-gap: 20px;
+    }
+    &__child {
+      width: 80%;
+      height: 23em;
+      margin: 0 auto;
+    }
+    &__details {
+      top: 35%;
+    }
+  }
+  .category {
+    &__heading--big {
+      font-size: 2.8em;
+      margin: 0;
+      text-align: center;
+    }
+    &__con {
+      grid-row-gap: 10px;
+    }
+    &__child {
+      width: 80%;
+      margin: 0 auto;
     }
   }
 }
