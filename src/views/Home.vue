@@ -106,7 +106,7 @@
             alt="icon"
             class="category__icon"
           />
-          <h3 class="category__heading--small">Design</h3>
+          <h4 class="category__heading--small">Design</h4>
           <p class="category__info">150 Job Vacancy</p>
         </div>
         <div class="category__child">
@@ -115,7 +115,7 @@
             alt="icon"
             class="category__icon"
           />
-          <h3 class="category__heading--small">Development</h3>
+          <h4 class="category__heading--small">Development</h4>
           <p class="category__info">200 Job Vacancy</p>
         </div>
         <div class="category__child">
@@ -124,17 +124,85 @@
             alt="icon"
             class="category__icon"
           />
-          <h3 class="category__heading--small">Project Management</h3>
+          <h4 class="category__heading--small">Project Management</h4>
           <p class="category__info">120 Job Vacancy</p>
         </div>
       </div>
     </section>
+    <section class="about">
+      <div class="about__img-con">
+        <img
+          src="../assets/images/images/broke.png"
+          alt="broke"
+          class="about__img"
+        />
+      </div>
+      <div class="about__con">
+        <h1 class="about__heading">We will help you get your dream job easy</h1>
+        <p class="about__paragraph">
+          We connect tech talents with the right job and have helped a lot of
+          people (and counting) gain access to tech jobs across the World. We
+          Assess We help techies assess their skill-level or talent based on
+          their ability to solve problems, learning speed, and strength of
+          character.
+        </p>
+      </div>
+    </section>
+    <footer class="footer">
+      <div class="footer__child">
+        <p class="footer__logo">huntr</p>
+        <div class="footer__icons">
+          <img
+            src="../assets/icons/icons/twitter.png"
+            alt="twitter"
+            class="footer__icon"
+          />
+          <img
+            src="../assets/icons/icons/medium.svg"
+            alt="medium"
+            class="footer__icon"
+          />
+          <img
+            src="../assets/icons/icons/facebook.svg"
+            alt="facebook"
+            class="footer__icon"
+          />
+          <img
+            src="../assets/icons/icons/instagram.svg"
+            alt="facebook"
+            class="footer__icon"
+          />
+        </div>
+      </div>
+
+      <div class="footer__child">
+        <ul class="footer__links">
+          <li>Home</li>
+          <li>Pricing</li>
+          <li>Features</li>
+          <li>About Us</li>
+        </ul>
+      </div>
+      <div class="footer__child">
+        <ul class="footer__links">
+          <li>Career</li>
+          <li>Community</li>
+          <li>Privacy Policy</li>
+        </ul>
+      </div>
+      <div class="footer__child">
+        <ul class="footer__links">
+          <li>Sign In</li>
+          <li>Register</li>
+          <li>Know More</li>
+        </ul>
+      </div>
+    </footer>
   </div>
 </template>
 
 <script>
-import { ref, onBeforeMount } from 'vue';
-import firebase from 'firebase';
+import { ref } from 'vue';
 import getJobs from '../composables/getJobs';
 import axios from 'axios';
 
@@ -142,9 +210,7 @@ export default {
   name: 'Home',
 
   setup() {
-    const name = ref('');
     const search_query = ref('');
-    // const jobs = ref([]);
     const { jobs, error, load } = getJobs();
 
     load();
@@ -162,24 +228,7 @@ export default {
       }
     };
 
-    onBeforeMount(() => {
-      const user = firebase.auth().currentUser;
-      if (user) {
-        name.value = user.email.split('@')[0];
-      }
-    });
-    const Logout = () => {
-      // console.log('clicked');
-      firebase
-        .auth()
-        .signOut()
-        .then(() => console.log('signed out'))
-        .catch((err) => alert(err.message));
-    };
-
     return {
-      name,
-      Logout,
       HandleSearch,
       search_query,
       jobs,
@@ -348,6 +397,7 @@ export default {
     cursor: pointer;
   }
 }
+
 .category {
   background-color: #fafafa;
   &__heading--big {
@@ -358,7 +408,7 @@ export default {
     max-width: 1000px;
     margin: 2em auto;
     grid-row-gap: 40px;
-    grid-column-gap: 20px;
+    grid-column-gap: 40px;
     /* -moz-column-gap: 20px; */
     column-gap: 200px;
     display: grid;
@@ -377,13 +427,77 @@ export default {
   }
   &__icon {
     margin: 2em 0;
-    height: 2em;
+    height: em;
   }
   &__heading--small {
     margin: 1em 0;
   }
 }
+.about {
+  margin-top: 8em;
+  display: flex;
+  justify-content: space-evenly;
+  &__img-con {
+    width: 35%;
+    position: relative;
+  }
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  &__img-con::after {
+    content: '';
+    position: absolute;
+    right: 1em;
+    bottom: 1em;
+    width: 100%;
+    height: 100%;
+    outline: 0.5rem solid #f261b4;
+    z-index: -1;
+    transition: all 1s linear;
+  }
+  &__img-con:hover::after {
+    right: 0;
+    bottom: 0;
+  }
+  &__con {
+    width: 40%;
+  }
+  &__heading {
+    font-size: 2.5em;
+    color: #212121;
+  }
+  &__paragraph {
+    color: #707070;
+    margin-top: 2em;
+    line-height: 1.6em;
+  }
+}
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 10em;
+  padding: 4em;
 
+  &__logo {
+    font-size: 1.6em;
+    font-weight: 900;
+    color: #f261b4;
+    text-align: center;
+    margin-bottom: 1.5em;
+  }
+  &__icons {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+  }
+  &__icon {
+    width: 2.5em;
+    padding-left: 1em;
+  }
+}
 @media (max-width: 990px) {
   .logo {
     font-size: 2em;
@@ -461,7 +575,7 @@ export default {
       width: 38%;
     }
   }
-  .job {
+  .jobs {
     font-size: 12px;
     &__heading {
       font-size: 2.8em;
@@ -487,11 +601,41 @@ export default {
       text-align: center;
     }
     &__con {
-      grid-row-gap: 10px;
+      grid-row-gap: 1 0px;
     }
     &__child {
       width: 80%;
       margin: 0 auto;
+    }
+  }
+  .about {
+    flex-direction: column;
+
+    &__img-con {
+      width: 80%;
+      display: block;
+      margin: auto;
+    }
+
+    &__con {
+      width: 80%;
+      margin: 4em auto;
+      text-align: center;
+    }
+  }
+  .footer {
+    flex-direction: column;
+    &__child {
+      margin-top: 0.4em;
+    }
+    &__icons {
+      margin-bottom: 0.5em;
+    }
+    &__links {
+      text-align: center;
+    }
+    &__links li {
+      padding: 0.5em;
     }
   }
 }

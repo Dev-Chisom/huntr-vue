@@ -1,5 +1,5 @@
 <template>
-  <div id="nav">
+  <div>
     <!-- <router-link to="/">Home</router-link> |
     <router-link to="/about">About</router-link> -->
     <router-view />
@@ -20,7 +20,7 @@ export default {
         if (!user) {
           router.replace('/');
         } else if (route.path == '/login' || route.path == '/register') {
-          router.replace('/');
+          router.replace('/dashboard');
         }
       });
     });
@@ -48,5 +48,11 @@ body {
 }
 a {
   text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+li {
+  padding: 0.4em;
 }
 </style>
