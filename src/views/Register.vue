@@ -146,7 +146,7 @@ export default {
 }
 
 @media (max-width: 990px) {
-  .login {
+  .register {
     margin: 5em 0;
 
     &__side {
